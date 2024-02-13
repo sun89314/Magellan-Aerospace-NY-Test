@@ -51,3 +51,15 @@ BEGIN
     RETURN totalCost;
 END;
 $$ LANGUAGE plpgsql;
+-- the code I've used for database administration
+CREATE ROLE leting WITH LOGIN PASSWORD '123456';
+GRANT CONNECT ON DATABASE Part TO leting;
+GRANT USAGE ON SCHEMA public TO leting;
+GRANT SELECT ON item TO leting;
+GRANT INSERT ON item TO leting;
+GRANT UPDATE ON item TO leting;
+GRANT DELETE ON item TO leting;
+GRANT USAGE, SELECT, UPDATE ON SEQUENCE item_id_seq TO leting;
+SELECT setval('item_id_seq', (SELECT MAX(id) FROM item));
+INSERT INTO item (item_name, parent_item, cost, req_date) VALUES
+('Item5', NULL, 500, '2024-02-20');
