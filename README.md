@@ -1,4 +1,5 @@
 ﻿# Magellan Aerospace Software Team Hiring Assignment
+For this assignment, I've created database part, created a user Leting and mange its authority.
 
 1. Create a PostgreSQL script that does the following 
     * Create a database called `Part`
